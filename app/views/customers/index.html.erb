@@ -1,22 +1,55 @@
-<h1>All Customer</h1>
-<ol>
-	<%= @customers.each do |customer| %>
-	<li>
-		<p>Customer id: <%= customer.id %></p>
-		<p>Customer name: <%= "#{customer.first_name} #{customer.last-name}" %></p>
-		<ol>
-			<%= customer.addresses.each do |address| %>
-			</li>
-				<p>Stree: <%= address.street %></p>
-				<p>City: <%= address.city %></p>
-				<p>Postal Code: <%= address.postal_code %></p>
-				<p>Country: <%= address.country %></p>
-			</li>
-			<%= end %>
-		</ol>
-	</li>
-	<%= end %>
-</ol>
+<h1>All Customers</h1>
 
+<%= render partial: "list" %>
 
-<form action="<%=  %>">
+<h2>Create a new Customer</h2>
+<% @customer = Customer.new %>
+
+<%= form_for @customer do |f|%>
+
+  <%= f.label :first_name %>:
+  <%= f.text_field :first_name %><br>
+
+  <%= f.label :last_name %>:
+  <%= f.text_field :last_name %><br>
+
+  <%= f.submit %>
+	
+<% end %>
+
+<h2>Create a new Address</h2>
+
+<form action="<%= addresses_url %>" method="post">
+	
+	<input name="address[city]" type="text" placeholder="city"><br>
+	<input name="address[postal_code]" type="text" placeholder="postal_code"><br>
+	<input name="address[street]" type="text" placeholder="street"><br>
+	
+	<p>Create this adress for: </p>
+	<select name="customer">
+		<%= @customers.each do |customer| %>
+		<option value="<%= customer.id %>">
+			<%= "#{customer.first_name} #{customer.last_name}" %>
+		</option>
+		<% end %>
+	</select>
+	
+	
+	<input name="commit" type="submit" value="Create Address">
+</form>
+
+<h2> Seearch by postal code: </h2>
+
+<form action="<%= search_customers_url %>" method="get">
+	
+	<input type="text" name="postal_code" placeholder="Postal Code">
+	<input type="submit" value="Search">
+	
+</form>
+	
+
+	
+	
+
+	
+

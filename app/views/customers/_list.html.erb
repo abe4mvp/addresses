@@ -1,0 +1,20 @@
+<ol>
+	<% @customers.each do |customer| %>
+	<li>
+		<p>Customer id: <%= customer.id %></p>
+		<p>Customer name: <%= "#{customer.first_name} #{customer.last_name}" %></p>
+		<ol>
+			<% customer.addresses.each_with_index do |address, idx| %>
+			<p>Adress number: <%= idx + 1 %></p>
+			</li>
+				<p>Street: <%= address.street %></p>
+				<p>City: <%= address.city %></p>
+				<p>Postal Code: <%= address.postal_code %></p>
+			</li>
+			<br>
+			<% end %>
+		</ol>
+	</li>
+	<% end %>
+</ol>
+

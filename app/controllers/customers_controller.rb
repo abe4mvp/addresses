@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.all.includes(:addresses)
+    @customers = Customer.includes(:addresses)
   end
   
   def create
@@ -16,9 +16,11 @@ class CustomersController < ApplicationController
   end
   
   def search
-    @customers = Customer.includes(:addresses).merge(Address.where("postal code == ?", params[:postal_code]))
+    @postal_code = params[:postal_code]
+    @customers = Customer.includes(:addresses).merge(Address.where(postal_code: @postal_code ))
     
-    render :index
+    
+    render :search_results
   end
   
 end

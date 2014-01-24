@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
   
   def create 
+    
     @customer = Customer.find(params[:customer])
     @customer.addresses.build(params[:address])
     

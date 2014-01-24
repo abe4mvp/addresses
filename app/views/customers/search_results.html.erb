@@ -1,0 +1,7 @@
+
+<% if @customer %>
+<%= "Here are the customer in postal code #{@postal_code}"  %>
+<%= render partial: "list" %>
+<% else %>
+<p>Sorry no results for this postal code <%= @postal_code %></p>
+<% end %>

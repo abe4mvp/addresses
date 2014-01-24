@@ -1,8 +1,13 @@
 Sayforexample::Application.routes.draw do
   
   resources :customers do
-    get "search"
+    collection do
+      get "search"
+      get "search_results"
+    end
   end
+  
+  resources :addresses 
   root to: "customers#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.

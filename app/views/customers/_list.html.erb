@@ -5,7 +5,7 @@
 		<p>Customer name: <%= "#{customer.first_name} #{customer.last_name}" %></p>
 		<ol>
 			<% customer.addresses.each_with_index do |address, idx| %>
-			<p>Adress number: <%= idx + 1 %></p>
+			<p>Address number: <%= idx + 1 %></p>
 			</li>
 				<p>Street: <%= address.street %></p>
 				<p>City: <%= address.city %></p>

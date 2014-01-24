@@ -1,0 +1,22 @@
+<h1>All Customer</h1>
+<ol>
+	<%= @customers.each do |customer| %>
+	<li>
+		<p>Customer id: <%= customer.id %></p>
+		<p>Customer name: <%= "#{customer.first_name} #{customer.last-name}" %></p>
+		<ol>
+			<%= customer.addresses.each do |address| %>
+			</li>
+				<p>Stree: <%= address.street %></p>
+				<p>City: <%= address.city %></p>
+				<p>Postal Code: <%= address.postal_code %></p>
+				<p>Country: <%= address.country %></p>
+			</li>
+			<%= end %>
+		</ol>
+	</li>
+	<%= end %>
+</ol>
+
+
+<form action="<%=  %>">
